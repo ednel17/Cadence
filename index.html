@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+/* boot error reporter — surfaces any script error on screen instead of a blank page */
+(function(){
+  function show(msg){
+    try{
+      var b=document.getElementById('boot-error');
+      if(!b){b=document.createElement('div');b.id='boot-error';
+        b.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;background:#b3402a;color:#fff;font:12px/1.45 system-ui,-apple-system,sans-serif;padding:10px 14px;white-space:pre-wrap;box-shadow:0 2px 10px rgba(0,0,0,.35)';
+        (document.body||document.documentElement).appendChild(b);}
+      b.textContent='\u26A0 Script error (please screenshot this):\n'+msg;
+    }catch(_){}
+  }
+  window.addEventListener('error',function(e){show((e.message||'error')+(e.filename?(' @ '+String(e.filename).split('/').pop()+':'+e.lineno+':'+e.colno):''));});
+  window.addEventListener('unhandledrejection',function(e){show('Promise rejected: '+((e.reason&&(e.reason.message||e.reason))||'unknown'));});
+})();
+</script>
+<meta name="description" content="Cadence — beautiful, customizable physical & digital planning systems for fitness, family, work, money, school, and every rhythm you're trying to keep. Find your rhythm.">
+<title>Cadence — Find your rhythm. Build a planner that follows it.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Nunito:wght@500;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=5">
+</head>
+<body>
+
+<!-- ====================== ANNOUNCEMENT BAR ====================== -->
+<div class="announce">
+  <div class="announce-track" id="announceTrack">
+    <span>♪ Start any month — start when life actually starts changing</span>
+    <span>♪ Physical, digital &amp; hybrid systems</span>
+    <span>♪ Design your rhythm in under two minutes</span>
+    <span>♪ Free shipping over $50 · digital delivers instantly</span>
+  </div>
+</div>
+
+<!-- ====================== NAV ====================== -->
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+    <a class="brand" href="#/home" data-route="home" aria-label="Cadence home">
+      <span class="beat" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      Cadence
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="#/home" data-route="home">Home</a>
+      <a href="#/shop" data-route="shop">Shop</a>
+      <a href="#/studio" data-route="studio">Preview Studio</a>
+      <a href="#/club" data-route="club">Club</a>
+      <a href="#/gifts" data-route="gifts">Gifts</a>
+      <a href="#/reviews" data-route="reviews">Reviews</a>
+    </div>
+    <div class="nav-actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Search">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="icon-btn cart-btn" id="cartBtn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 12H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#/home" data-route="home">Home</a>
+  <a href="#/shop" data-route="shop">Shop</a>
+  <a href="#/studio" data-route="studio">Preview Studio</a>
+  <a href="#/club" data-route="club">Club</a>
+  <a href="#/gifts" data-route="gifts">Gifts</a>
+  <a href="#/reviews" data-route="reviews">Reviews</a>
+  <a href="#newsletter" data-scroll="newsletter">Help &amp; FAQ</a>
+</div>
+
+<span id="top"></span>
+
+<!-- ====================== HERO ====================== -->
+<main id="main">
+<div class="page-view active" data-page="home" id="page-home">
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="tick" aria-hidden="true"></span> Find your rhythm</div>
+      <h1>Your life has a rhythm. Build a planner that <em>follows it.</em></h1>
+      <p class="lede">Cadence creates customizable physical and digital planning systems for fitness, family, work, money, school, wellness — and everything you're trying to become consistent with.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#/studio" data-route="studio">Build your rhythm →</a>
+        <a class="btn btn-outline" href="#/shop" data-route="shop">Shop best sellers</a>
+      </div>
+      <div class="hero-points">
+        <span>✦ Start any month</span>
+        <span>✦ Paper, digital, or both</span>
+        <span>✦ Your name on the cover</span>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <div class="ha-planner">
+        <div class="ha-cover">
+          <div class="ha-strip"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="ha-cover-meta"><span>Cadence</span><strong>Your Life Rhythm</strong></div>
+          <div class="ha-name">Maya's 2026</div>
+        </div>
+      </div>
+      <div class="ha-tablet">
+        <div class="ha-screen">
+          <div class="ha-scr-top"><b>This week</b><span>in rhythm</span></div>
+          <div class="ha-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="ha-rows">
+            <div class="ha-row"><span class="dot on"></span>Move my body</div>
+            <div class="ha-row"><span class="dot on"></span>Plan the meals</div>
+            <div class="ha-row"><span class="dot"></span>Budget check-in</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ====================== TRUST / BENEFIT STRIP ====================== -->
+<section class="trust-strip">
+  <div class="wrap trust-grid">
+    <div class="trust-item"><span class="ti-ic">◴</span><div><b>Start any month</b><p>No forced January. Begin when life changes.</p></div></div>
+    <div class="trust-item"><span class="ti-ic">▦</span><div><b>Physical, digital, or hybrid</b><p>Paper, tablet, or both — in sync.</p></div></div>
+    <div class="trust-item"><span class="ti-ic">✎</span><div><b>Personalized covers</b><p>Your name, your theme, your system.</p></div></div>
+    <div class="trust-item"><span class="ti-ic">＋</span><div><b>Add pages for your life</b><p>Habits, meals, budget, fitness, focus.</p></div></div>
+  </div>
+</section>
+
+<!-- ====================== CATEGORIES ====================== -->
+<section class="section" id="categories">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow center-eb"><span class="tick"></span> Find your people</div>
+      <h2>Made for the season of life you're in</h2>
+      <p>Start with what you're trying to become consistent with. Each comes in paper, digital, or both.</p>
+    </div>
+    <div class="cat-grid" id="catGrid"><!-- JS --></div>
+  </div>
+</section>
+
+<!-- ====================== BEST SELLERS ====================== -->
+<section class="section soft" id="bestsellers">
+  <div class="wrap">
+    <div class="sec-head left">
+      <div><div class="eyebrow"><span class="tick"></span> Loved most</div><h2>This season's best sellers</h2></div>
+      <a class="link-arrow" href="#/shop" data-route="shop">Shop everything →</a>
+    </div>
+    <div class="rail" id="bestGrid"><!-- JS --></div>
+  </div>
+</section>
+
+<!-- ====================== SHOP ====================== -->
+<!-- WHY CADENCE + CTA -->
+<section class="section soft" id="whyCadence">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow center-eb"><span class="tick"></span> Why Cadence</div>
+      <h2>Built for the person you're becoming</h2>
+      <p>Most planners sell you guilt. Cadence builds a calm, flexible rhythm you can actually keep — with grace days, not broken streaks.</p>
+    </div>
+    <div class="cta-cards">
+      <a class="cta-card" href="#/shop" data-route="shop">
+        <span class="cta-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></span>
+        <b>Shop systems</b>
+        <span class="cta-sub">Browse physical, digital &amp; hybrid planners.</span>
+        <span class="cta-go">Shop →</span>
+      </a>
+      <a class="cta-card" href="#/studio" data-route="studio">
+        <span class="cta-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19h3L19 8a2 2 0 0 0-3-3L5 16v3Z"/><path d="m14.5 6.5 3 3"/></svg></span>
+        <b>Build in Studio</b>
+        <span class="cta-sub">Design your planner and preview every page.</span>
+        <span class="cta-go">Open studio →</span>
+      </a>
+      <a class="cta-card" href="#/studio" data-route="studio" data-scroll="system">
+        <span class="cta-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l1.7 5.1L19 11l-5.3 1.9L12 18l-1.7-5.1L5 11l5.3-1.9L12 4Z"/></svg></span>
+        <b>Take the quiz</b>
+        <span class="cta-sub">Answer a few questions, get your system.</span>
+        <span class="cta-go">Start quiz →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</div>
+<div class="page-view" data-page="shop" id="page-shop">
+<section class="section shop" id="shop">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow center-eb"><span class="tick"></span> The shop</div>
+      <h2>Find the one that fits your life</h2>
+      <p>Filter by format and category. Add to cart in a tap. Your goals deserve a place to live.</p>
+    </div>
+
+    <div class="shop-controls">
+      <div class="search-box">
+        <svg class="s-ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="text" id="searchInput" placeholder="Search planners, calendars, systems…" aria-label="Search products">
+      </div>
+      <button class="filters-toggle" id="filtersToggle" type="button" aria-controls="shopFilters" aria-expanded="false"><span>Filters &amp; sort</span><span class="ft-chev">⌄</span></button>
+      <div class="control-row" id="shopFilters">
+        <div class="chips" id="typeChips" role="group" aria-label="Filter by format">
+          <button class="chip active" data-type="all">All</button>
+          <button class="chip" data-type="physical">Physical</button>
+          <button class="chip" data-type="digital">Digital</button>
+          <button class="chip" data-type="hybrid">Hybrid</button>
+          <button class="chip" data-type="accessories">Accessories</button>
+        </div>
+        <div class="select-wrap">
+          <select id="catSelect" aria-label="Filter by category"><option value="all">All categories</option></select>
+          <select id="sortSelect" aria-label="Sort products">
+            <option value="featured">Sort: Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Top rated</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <p class="result-count" id="resultCount"></p>
+    <div class="product-grid" id="productGrid"><!-- JS --></div>
+    <p class="empty-state" id="emptyState" hidden>No matches yet — try a different search or format.</p>
+  </div>
+</section>
+
+<!-- ====================== CADENCE PREVIEW STUDIO ====================== -->
+
+</div>
+<div class="page-view" data-page="studio" id="page-studio">
+<section class="section soft studio-sec" id="build">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow center-eb"><span class="tick"></span> Cadence Preview Studio</div>
+      <h2>See every page before it becomes yours.</h2>
+      <p>Change the layout, color, font, start month, and add-on pages — then watch your planner update in real time. No guessing. Open the pages before you buy.</p>
+    </div>
+
+    <div class="studio" id="studio">
+      <!-- LEFT: CONTROLS -->
+      <div class="st-controls" id="stControls">
+
+        <!-- GUIDED START -->
+        <div class="st-guided-wrap">
+          <button class="st-guide-btn" id="helpChoose" type="button">
+            <span class="hg-ic">✦</span>
+            <span class="hg-txt"><b>Not sure where to start?</b><small>Answer 3 quick questions — we’ll set it up</small></span>
+            <span class="hg-arrow">→</span>
+          </button>
+          <div class="st-guided" id="stGuided" hidden>
+            <div class="gq" data-gq="goal">
+              <p class="gq-label">1 · What are you trying to get under control?</p>
+              <div class="gq-opts">
+                <button type="button" data-val="family">My family schedule</button>
+                <button type="button" data-val="health">My health</button>
+                <button type="button" data-val="money">My money</button>
+                <button type="button" data-val="work">My school / work</button>
+                <button type="button" data-val="focus">My focus</button>
+                <button type="button" data-val="habits">My habits</button>
+              </div>
+            </div>
+            <div class="gq" data-gq="prefer">
+              <p class="gq-label">2 · How do you like to plan?</p>
+              <div class="gq-opts">
+                <button type="button" data-val="physical">Paper</button>
+                <button type="button" data-val="digital">Digital</button>
+                <button type="button" data-val="hybrid">Both</button>
+              </div>
+            </div>
+            <div class="gq" data-gq="structure">
+              <p class="gq-label">3 · How much structure do you want?</p>
+              <div class="gq-opts">
+                <button type="button" data-val="light">Light</button>
+                <button type="button" data-val="balanced">Balanced</button>
+                <button type="button" data-val="high">Highly structured</button>
+              </div>
+            </div>
+            <div class="gq-foot">
+              <button class="btn btn-primary" id="guidedApply" type="button">Show my rhythm</button>
+              <span class="gq-note" id="guidedNote"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORMAT -->
+        <div class="st-acc open" data-acc="format">
+          <button class="st-acc-head" type="button"><span class="st-acc-t">Format</span><span class="st-acc-sum" id="accFormat">Hybrid</span><span class="chev">⌄</span></button>
+          <div class="st-acc-body">
+            <div class="st-group">
+              <div class="st-seg" data-group="format">
+                <button class="st-opt" data-val="physical">Physical</button>
+                <button class="st-opt" data-val="digital">Digital</button>
+                <button class="st-opt active" data-val="hybrid">Hybrid</button>
+                <button class="st-opt" data-val="wall">Wall</button>
+                <button class="st-opt" data-val="desk">Desk</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAGES -->
+        <div class="st-acc" data-acc="pages">
+          <button class="st-acc-head" type="button"><span class="st-acc-t">Pages</span><span class="st-acc-sum">View &amp; layout</span><span class="chev">⌄</span></button>
+          <div class="st-acc-body">
+            <div class="st-group">
+              <span class="st-label">Page / view</span>
+              <div class="st-opts" data-group="view">
+                <button class="st-opt" data-val="cover">Cover</button>
+                <button class="st-opt active" data-val="month">Monthly</button>
+                <button class="st-opt" data-val="week">Weekly</button>
+                <button class="st-opt" data-val="day">Daily</button>
+                <button class="st-opt" data-val="habit">Habits</button>
+                <button class="st-opt" data-val="meal">Meals</button>
+                <button class="st-opt" data-val="budget">Budget</button>
+                <button class="st-opt" data-val="fitness">Fitness</button>
+                <button class="st-opt" data-val="notes">Notes</button>
+              </div>
+            </div>
+            <div class="st-group">
+              <span class="st-label">Weekly layout</span>
+              <div class="st-opts" data-group="layout">
+                <button class="st-opt active" data-val="vertical">Weekly Vertical</button>
+                <button class="st-opt" data-val="horizontal">Weekly Horizontal</button>
+                <button class="st-opt" data-val="dashboard">Dashboard</button>
+                <button class="st-opt" data-val="daily">Daily Focus</button>
+                <button class="st-opt" data-val="minimal">Minimal Grid</button>
+                <button class="st-opt" data-val="family">Family Columns</button>
+                <button class="st-opt" data-val="timeblock">Time Blocked</button>
+              </div>
+            </div>
+            <div class="st-group">
+              <span class="st-label">Start month</span>
+              <select id="stMonth" class="st-input">
+                <option>January</option><option>February</option><option>March</option>
+                <option>April</option><option>May</option><option>June</option>
+                <option>July</option><option>August</option><option>September</option>
+                <option>October</option><option>November</option><option>December</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- STYLE -->
+        <div class="st-acc" data-acc="style">
+          <button class="st-acc-head" type="button"><span class="st-acc-t">Style</span><span class="st-acc-sum" id="accStyle">Soft Minimal</span><span class="chev">⌄</span></button>
+          <div class="st-acc-body">
+            <div class="st-group">
+              <span class="st-label">Color palette</span>
+              <div class="st-swatches" data-group="palette">
+                <button class="st-sw active" data-val="Soft Minimal"   style="--c:linear-gradient(160deg,#EFE7D8,#F7F2E9)" title="Soft Minimal"></button>
+                <button class="st-sw" data-val="Garden Warmth"  style="--c:linear-gradient(160deg,#5E7E62,#8AA68C 58%,#EAC889)" title="Garden Warmth"></button>
+                <button class="st-sw" data-val="Midnight Focus" style="--c:linear-gradient(160deg,#1C1B26,#2E3B47 60%,#6E92A1)" title="Midnight Focus"></button>
+                <button class="st-sw" data-val="Coastal Calm"   style="--c:linear-gradient(160deg,#6E92A1,#A9C2CE 55%,#F2D3C8)" title="Coastal Calm"></button>
+                <button class="st-sw" data-val="Bold Momentum"  style="--c:linear-gradient(160deg,#9C4F2E,#C77E5A 55%,#D8A24A)" title="Bold Momentum"></button>
+                <button class="st-sw" data-val="Blush Routine"  style="--c:linear-gradient(160deg,#E7B3A3,#F3D6CB 60%,#F7EDE6)" title="Blush Routine"></button>
+                <button class="st-sw" data-val="Sage Reset"     style="--c:linear-gradient(160deg,#5E7E62,#8AA68C 55%,#D8E2CC)" title="Sage Reset"></button>
+                <button class="st-sw" data-val="Ink & Gold"     style="--c:linear-gradient(160deg,#1C1B26,#2E2C36 60%,#3A3730)" title="Ink & Gold"></button>
+              </div>
+              <div class="st-palette-name" id="stPaletteName">Soft Minimal</div>
+            </div>
+            <div class="st-group">
+              <span class="st-label">Font style</span>
+              <div class="st-opts tight" data-group="font">
+                <button class="st-opt active" data-val="serif">Serif</button>
+                <button class="st-opt" data-val="sans">Sans</button>
+                <button class="st-opt" data-val="rounded">Rounded</button>
+                <button class="st-opt" data-val="editorial">Editorial</button>
+                <button class="st-opt" data-val="hand">Handwritten</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PERSONALIZE -->
+        <div class="st-acc" data-acc="personal">
+          <button class="st-acc-head" type="button"><span class="st-acc-t">Personalize</span><span class="st-acc-sum">Name &amp; title</span><span class="chev">⌄</span></button>
+          <div class="st-acc-body">
+            <div class="st-group st-row">
+              <div>
+                <span class="st-label">Name on cover</span>
+                <input type="text" id="stName" class="st-input" maxlength="20" placeholder="e.g. Maya">
+              </div>
+              <div>
+                <span class="st-label">Planner title</span>
+                <input type="text" id="stTitle" class="st-input" maxlength="24" placeholder="e.g. 90-Day Reset">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADD-ONS + PREVIEW MODE -->
+        <div class="st-acc" data-acc="sections">
+          <button class="st-acc-head" type="button"><span class="st-acc-t">Add-on pages</span><span class="st-acc-sum" id="accAddons">None</span><span class="chev">⌄</span></button>
+          <div class="st-acc-body">
+            <div class="st-group">
+              <span class="st-label">Add sections <span class="st-hint">+$4 each · adds tabs &amp; pages</span></span>
+              <div class="st-addons" data-group="addons">
+                <button class="st-add" data-val="Habit Tracker">Habit Tracker</button>
+                <button class="st-add" data-val="Meal Planning">Meal Planning</button>
+                <button class="st-add" data-val="Budget Pages">Budget Pages</button>
+                <button class="st-add" data-val="Fitness Pages">Fitness Pages</button>
+                <button class="st-add" data-val="Family Schedule">Family Schedule</button>
+                <button class="st-add" data-val="Assignment Tracker">Assignment Tracker</button>
+                <button class="st-add" data-val="Prayer / Reflection">Prayer / Reflection</button>
+                <button class="st-add" data-val="Business Goals">Business Goals</button>
+                <button class="st-add" data-val="Social Media Calendar">Social Media Calendar</button>
+                <button class="st-add" data-val="Notes Pages">Notes Pages</button>
+                <button class="st-add" data-val="Stickers">Stickers</button>
+                <button class="st-add" data-val="Digital Companion">Digital Companion</button>
+              </div>
+            </div>
+            <div class="st-group">
+              <span class="st-label">Preview mode</span>
+              <div class="st-seg" data-group="mode">
+                <button class="st-opt active" data-val="blank">Blank pages</button>
+                <button class="st-opt" data-val="example">Example</button>
+                <button class="st-opt" data-val="compare">Before / After</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAVE / SHARE -->
+        <div class="st-acc" data-acc="save">
+          <button class="st-acc-head" type="button"><span class="st-acc-t">Save &amp; share</span><span class="st-acc-sum">Keep this design</span><span class="chev">⌄</span></button>
+          <div class="st-acc-body">
+            <div class="st-saverow">
+              <button class="btn btn-line" id="saveDesign" type="button">♥ Save this design</button>
+              <button class="btn btn-line" id="shareDesign" type="button">⬚ Copy share link</button>
+            </div>
+            <p class="st-save-msg" id="stSaveMsg" role="status"></p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: LIVE PREVIEW -->
+      <div class="st-preview">
+        <div class="st-stage" id="stStage"><!-- JS: frame + page --></div>
+        <div class="st-msg" id="stMsg"><span class="st-msg-dot"></span><span id="stMsgText">Watch your planner become yours.</span></div>
+        <div class="st-thumbs" id="stThumbs"><!-- JS --></div>
+        <div class="st-why" id="stWhy"><!-- JS --></div>
+        <div class="st-summary" id="stSummary"><!-- JS --></div>
+        <div class="st-usecase" id="stUseCase"><!-- JS --></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== BUILD MY SYSTEM (QUIZ) ====================== -->
+<section class="section quiz-sec" id="system">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow center-eb light-eb"><span class="tick"></span> Build my system</div>
+      <h2>Overwhelmed? Let's find your rhythm together.</h2>
+      <p>Answer four quick questions and we'll recommend a system — like a calm friend who happens to be very organized.</p>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-q" data-q="1">
+        <p class="quiz-qt"><span>1</span> What feels most chaotic right now?</p>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-q="1" data-val="family">My family's schedule</button>
+          <button class="quiz-opt" data-q="1" data-val="health">My health &amp; eating</button>
+          <button class="quiz-opt" data-q="1" data-val="focus">My focus &amp; attention</button>
+          <button class="quiz-opt" data-q="1" data-val="money">My money</button>
+          <button class="quiz-opt" data-q="1" data-val="work">My work &amp; projects</button>
+          <button class="quiz-opt" data-q="1" data-val="habits">My daily habits</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-q="2">
+        <p class="quiz-qt"><span>2</span> What are you trying to become consistent with?</p>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-q="2" data-val="exercise">Exercise</button>
+          <button class="quiz-opt" data-q="2" data-val="meals">Meal planning</button>
+          <button class="quiz-opt" data-q="2" data-val="study">Studying</button>
+          <button class="quiz-opt" data-q="2" data-val="budget">Budgeting</button>
+          <button class="quiz-opt" data-q="2" data-val="deepwork">Daily focus</button>
+          <button class="quiz-opt" data-q="2" data-val="routines">Family routines</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-q="3">
+        <p class="quiz-qt"><span>3</span> How do you prefer to plan?</p>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-q="3" data-val="physical">On paper</button>
+          <button class="quiz-opt" data-q="3" data-val="digital">Digitally</button>
+          <button class="quiz-opt" data-q="3" data-val="hybrid">Both</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-q="4">
+        <p class="quiz-qt"><span>4</span> How much structure do you want?</p>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-q="4" data-val="light">Light &amp; flexible</button>
+          <button class="quiz-opt" data-q="4" data-val="balanced">Balanced</button>
+          <button class="quiz-opt" data-q="4" data-val="high">Highly structured</button>
+        </div>
+      </div>
+
+      <div class="quiz-cta">
+        <button class="btn btn-primary" id="quizSubmit">See my system →</button>
+        <span class="quiz-note" id="quizNote">Pick one from each question.</span>
+      </div>
+
+      <div class="quiz-result" id="quizResult" hidden>
+        <div class="qr-mark"><span class="tick"></span></div>
+        <div class="qr-body">
+          <span class="qr-kick">Your recommended system</span>
+          <h3 id="qrTitle"></h3>
+          <p id="qrBlurb"></p>
+          <div class="qr-parts" id="qrParts"></div>
+          <button class="btn btn-primary" id="quizAddBtn">Add this system to cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== DIGITAL TWIN ====================== -->
+<section class="section twin">
+  <div class="wrap twin-grid">
+    <div class="twin-copy">
+      <div class="eyebrow"><span class="tick"></span> The Cadence difference</div>
+      <h2>Write it on paper. Carry it on your tablet. Revisit it from anywhere.</h2>
+      <p>Many Cadence systems come as a physical planner, a digital version, or a hybrid that keeps both in step. Digital when you need speed. Physical when you need presence.</p>
+      <ul class="twin-list">
+        <li><b>Printable PDFs</b> — sized for Letter, A4, and A5</li>
+        <li><b>iPad &amp; GoodNotes</b> — hyperlinked, tab-navigated</li>
+        <li><b>Digital habit dashboards</b> — your rhythm at a glance</li>
+        <li><b>Monthly reset templates</b> — a clean start, every month</li>
+        <li><b>Companion downloads</b> — for every physical planner</li>
+      </ul>
+      <a class="btn btn-outline" href="#/shop" data-route="shop" data-type="digital">Browse digital →</a>
+    </div>
+    <div class="twin-art" aria-hidden="true">
+      <div class="tw-paper"><div class="tw-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+      <div class="tw-sync">⇄</div>
+      <div class="tw-screen"><div class="tw-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="tw-bars"><b></b><b></b><b></b></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CADENCE CLUB ====================== -->
+
+</div>
+<div class="page-view" data-page="club" id="page-club">
+<section class="section club" id="club">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow center-eb gold-eb"><span class="tick"></span> Cadence Club</div>
+      <h2>One membership. A rhythm that never goes stale.</h2>
+      <p>Keep your favorite system — we keep it fresh. New drops, seasonal resets, and member challenges. Cancel anytime; everything you've downloaded stays yours.</p>
+    </div>
+    <div class="club-grid">
+      <div class="club-card">
+        <div class="club-name">Digital Club</div>
+        <div class="club-price">$9<span>/mo</span></div>
+        <ul>
+          <li>Monthly digital planner drops</li>
+          <li>Seasonal reset packs</li>
+          <li>New habit templates</li>
+          <li>Member-only challenges</li>
+        </ul>
+        <button class="btn btn-outline btn-block" data-action="buy" data-name="Cadence Club — Digital" data-price="9" data-meta="Membership · monthly" data-grad="Habits & Goals">Join Digital</button>
+      </div>
+      <div class="club-card featured">
+        <div class="club-flag">Most popular</div>
+        <div class="club-name">Hybrid Club</div>
+        <div class="club-price">$19<span>/mo</span></div>
+        <ul>
+          <li>Everything in Digital Club</li>
+          <li>Exclusive cover designs</li>
+          <li>Early access to new planners</li>
+          <li>Budget, fitness &amp; focus packs</li>
+        </ul>
+        <button class="btn btn-primary btn-block" data-action="buy" data-name="Cadence Club — Hybrid" data-price="19" data-meta="Membership · monthly" data-grad="Bold Momentum">Join Hybrid</button>
+      </div>
+      <div class="club-card">
+        <div class="club-name">Family Rhythm Club</div>
+        <div class="club-price">$29<span>/mo</span></div>
+        <ul>
+          <li>Everything in Hybrid Club</li>
+          <li>Family &amp; meal-planning packs</li>
+          <li>Shared household templates</li>
+          <li>Up to 5 member logins</li>
+        </ul>
+        <button class="btn btn-outline btn-block" data-action="buy" data-name="Cadence Club — Family Rhythm" data-price="29" data-meta="Membership · monthly" data-grad="Family Command Center">Join Family</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== TRANSFORMATION ====================== -->
+
+</div>
+<div class="page-view" data-page="gifts" id="page-gifts">
+<section class="section soft gift" id="gift">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow center-eb"><span class="tick"></span> Gifting</div>
+      <h2>Give someone a rhythm they can grow into</h2>
+      <p>The kind of gift that's still useful in March. Let them design their own, or start them off.</p>
+    </div>
+    <div class="gift-grid" id="giftGrid">
+      <div class="gift-card"><div class="gift-cover" style="background:linear-gradient(160deg,#9C4F2E,#C77E5A 55%,#D8A24A)"><span class="tick"></span></div><h3>Cadence Gift Card</h3><p>Any amount, delivered by email on any date. Never expires.</p><div class="gift-foot"><span class="gift-price">$25+</span><button class="btn btn-dark" data-action="buy" data-name="Cadence Gift Card" data-price="25" data-meta="Digital gift · any date" data-grad="Bold Momentum">Send a gift</button></div></div>
+      <div class="gift-card"><div class="gift-cover" style="background:linear-gradient(160deg,#5E7E62,#8AA68C 58%,#EAC889)"><span class="tick"></span></div><h3>Starter Planner Bundle</h3><p>A custom planner + sticker pack + digital companion to begin.</p><div class="gift-foot"><span class="gift-price">$64</span><button class="btn btn-dark" data-action="buy" data-name="Starter Planner Bundle" data-price="64" data-meta="Planner + stickers + digital" data-grad="Garden Warmth">Add to cart</button></div></div>
+      <div class="gift-card"><div class="gift-cover" style="background:linear-gradient(160deg,#6E92A1,#A9C2CE 55%,#F2D3C8)"><span class="tick"></span></div><h3>Teacher Gift Bundle</h3><p>The lesson-rhythm planner + tabs + sticker ritual pack.</p><div class="gift-foot"><span class="gift-price">$58</span><button class="btn btn-dark" data-action="buy" data-name="Teacher Gift Bundle" data-price="58" data-meta="Teacher planner + extras" data-grad="Coastal Calm">Add to cart</button></div></div>
+      <div class="gift-card"><div class="gift-cover" style="background:linear-gradient(160deg,#1C1B26,#2E3B47 60%,#6E92A1)"><span class="tick"></span></div><h3>New Year Reset Bundle</h3><p>A clean start: planner, goal-review pages, and habit system.</p><div class="gift-foot"><span class="gift-price">$72</span><button class="btn btn-dark" data-action="buy" data-name="New Year Reset Bundle" data-price="72" data-meta="Reset planner + habit system" data-grad="Midnight Focus">Add to cart</button></div></div>
+      <div class="gift-card"><div class="gift-cover" style="background:linear-gradient(160deg,#C77E5A,#E7B3A3 55%,#EAC889)"><span class="tick"></span></div><h3>Wellness Reset Bundle</h3><p>Fitness, meals, and mood — a gentle 90-day reset to gift.</p><div class="gift-foot"><span class="gift-price">$78</span><button class="btn btn-dark" data-action="buy" data-name="Wellness Reset Bundle" data-price="78" data-meta="Fitness + meals + mood" data-grad="Meals & Weight Loss">Add to cart</button></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== EMAIL SIGNUP ====================== -->
+
+</div>
+<div class="page-view" data-page="reviews" id="page-reviews">
+<section class="section soft transform">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow center-eb"><span class="tick"></span> The shift</div>
+      <h2>Not another planner to abandon. A system to come back to.</h2>
+    </div>
+    <div class="tf-grid">
+      <div class="tf-col before">
+        <div class="tf-label">Before Cadence</div>
+        <ul>
+          <li>Scattered notes on five apps</li>
+          <li>Goals you keep forgetting</li>
+          <li>Missed appointments</li>
+          <li>Half-used planners in a drawer</li>
+          <li>Weeks that feel like loose papers</li>
+        </ul>
+      </div>
+      <div class="tf-arrow" aria-hidden="true"><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
+      <div class="tf-col after">
+        <div class="tf-label">After Cadence</div>
+        <ul>
+          <li>A clear weekly rhythm</li>
+          <li>Goals you can actually see</li>
+          <li>Follow-through that builds</li>
+          <li>The whole family in sync</li>
+          <li>Calm, repeatable routines</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== TESTIMONIALS ====================== -->
+<section class="section" id="reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow center-eb"><span class="tick"></span> Reviews</div>
+      <h2>The reviews aren't really about paper</h2>
+    </div>
+    <div class="t-grid">
+      <figure class="t-card"><div class="t-stars">★★★★★</div><blockquote>"For the first time, the whole family knows what's happening without me being the human calendar."</blockquote><figcaption><span class="t-av"></span><span><b>Renee, busy mom</b>Family Command Center</span></figcaption></figure>
+      <figure class="t-card"><div class="t-stars">★★★★★</div><blockquote>"Lesson plans, grades, and a hundred small things — finally in one calm place I trust."</blockquote><figcaption><span class="t-av"></span><span><b>Mr. Alvarez, teacher</b>Teacher Lesson Rhythm</span></figcaption></figure>
+      <figure class="t-card"><div class="t-stars">★★★★★</div><blockquote>"From scattered all-nighters to an actual study rhythm. My grades followed."</blockquote><figcaption><span class="t-av"></span><span><b>Jordan, grad student</b>Student Semester Planner</span></figcaption></figure>
+      <figure class="t-card"><div class="t-stars">★★★★★</div><blockquote>"I missed four days and didn't quit. After years of all-or-nothing, that's the miracle."</blockquote><figcaption><span class="t-av"></span><span><b>Marisa, fitness</b>90-Day Weight Loss Cadence</span></figcaption></figure>
+      <figure class="t-card"><div class="t-stars">★★★★★</div><blockquote>"One page, one focus. The first system that works with my ADHD instead of against it."</blockquote><figcaption><span class="t-av"></span><span><b>Sam, focus</b>ADHD Weekly Focus System</span></figcaption></figure>
+      <figure class="t-card"><div class="t-stars">★★★★★</div><blockquote>"My business stopped living in my head. Quarterly goals to daily focus, all in rhythm."</blockquote><figcaption><span class="t-av"></span><span><b>Dee, founder</b>Executive Deep Work Planner</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== GIFT ====================== -->
+<section class="section newsletter" id="newsletter">
+  <div class="wrap nl-inner">
+    <div class="nl-copy">
+      <div class="eyebrow gold-eb"><span class="tick"></span> Free download</div>
+      <h2>Get the free 7-Day Rhythm Reset</h2>
+      <p>A one-week plan to find your footing — plus gentle ideas and early drops. No noise, unsubscribe anytime.</p>
+    </div>
+    <form class="nl-form" id="newsletterForm" novalidate>
+      <input type="email" id="nlEmail" placeholder="you@example.com" aria-label="Email address" required>
+      <button class="btn btn-primary" type="submit">Send it to me</button>
+      <p class="nl-msg" id="newsletterMsg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
+
+</div>
+</main>
+<!-- full-screen planner preview (mobile) -->
+<div class="fs-preview" id="fsPreview" aria-hidden="true" role="dialog" aria-label="Full preview">
+  <div class="fs-bar"><span class="fs-title" id="fsTitle">Preview</span><button class="fs-done" id="fsClose" type="button">Done</button></div>
+  <div class="fs-stage" id="fsStage"></div>
+</div>
+
+<footer class="footer">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a class="brand" href="#/home" data-route="home"><span class="beat" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Cadence</a>
+      <p class="foot-tag">Find your rhythm.</p>
+      <p class="foot-fine">Beautiful systems for real life — in paper and pixels. Start where you are. Build from there.</p>
+    </div>
+    <div class="foot-col"><h4>Shop</h4>
+      <a href="#/shop" data-route="shop" data-type="physical">Physical planners</a>
+      <a href="#/shop" data-route="shop" data-type="digital">Digital planners</a>
+      <a href="#/studio" data-route="studio">Build Your Rhythm</a>
+      <a href="#/shop" data-route="shop" data-type="accessories">Accessories</a>
+    </div>
+    <div class="foot-col"><h4>Cadence</h4>
+      <a href="#/club" data-route="club">Cadence Club</a>
+      <a href="#/gifts" data-route="gifts">Gift Cards</a>
+      <a href="#/reviews" data-route="reviews">Reviews</a>
+      <a href="#/studio" data-route="studio" data-scroll="system">Build My System</a>
+    </div>
+    <div class="foot-col"><h4>Help</h4>
+      <a href="#">Returns</a>
+      <a href="#">Shipping</a>
+      <a href="#">Contact</a>
+      <a href="#">FAQ</a>
+    </div>
+    <div class="foot-col"><h4>Follow</h4>
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+      <a href="#">Pinterest</a>
+      <a href="#">Newsletter</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Cadence. A mock store for demonstration.</span>
+    <span>Plan the life you keep meaning to live.</span>
+  </div>
+</footer>
+
+<!-- ====================== CART DRAWER ====================== -->
+<div class="overlay" id="overlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+  <div class="cart-head">
+    <h3>Your cart</h3>
+    <button class="icon-btn" id="cartClose" aria-label="Close cart">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-empty" id="cartEmpty">
+    <div class="ce-beat" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <p>Your cart is quiet. Let's build a rhythm.</p>
+    <button class="btn btn-dark" id="ceShop">Browse the shop</button>
+  </div>
+  <div class="cart-foot" id="cartFoot">
+    <div class="cart-note">♪ Digital delivers instantly · free shipping over $50</div>
+    <div class="cart-sub"><span>Subtotal</span><strong id="cartSubtotal">$0</strong></div>
+    <button class="btn btn-primary btn-block" id="cartCheckout">Checkout</button>
+  </div>
+</aside>
+
+<!-- ====================== PRODUCT MODAL ====================== -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-label="Product details">
+    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ====================== TOAST ====================== -->
+<div class="toast" id="toast" role="status"></div>
+
+<script src="script.js?v=5"></script>
+<script>
+/* boot watchdog: never-blank failsafe (force home active if nothing is) */
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    try{
+      if(!document.querySelector('.page-view.active')){
+        var h=document.querySelector('.page-view[data-page="home"]'); if(h) h.classList.add('active');
+      }
+    }catch(_){}
+  },400);
+});
+</script>
+</body>
+</html>
